@@ -15,7 +15,7 @@
 - **React.js**
 - **Norigin Spatial Navigation**
 - **IMDb API**
-- **CSS/Styled Components/Tailwind**
+- **Ant Design**
 
 ## 🚀 Getting Started
 
