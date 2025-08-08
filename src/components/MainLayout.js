@@ -3,7 +3,7 @@ import SideBar from './SideBar'
 
 const MainLayout = () => {
   return (
-    <Flex horizontal gap="middle" style={{ height: "100vh" }}>
+    <Flex gap="middle" style={{ height: "100vh" }}>
         <SideBar />
         <div>
             Right Side

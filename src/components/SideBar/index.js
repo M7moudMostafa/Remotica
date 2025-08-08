@@ -16,8 +16,8 @@ const SideBar = () => {
       <Logo />
       <FocusContext.Provider value={focusKey}>
         <Menu ref={ref}>
-          {MenuItems.map((item) => (
-            <Item item={item} />
+          {MenuItems.map((item, i) => (
+            <Item item={item} key={i} />
           ))}
         </Menu>
       </FocusContext.Provider>
