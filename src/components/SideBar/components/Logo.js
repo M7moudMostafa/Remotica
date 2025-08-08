@@ -13,9 +13,9 @@ const Logo = () => {
 };
 
 const LogoImage = styled.img`
-    width: 6rem;
-    height: 6rem;
-    object-fit: "contain
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
 `;
 
 const LogoTitle = styled(Title)`
