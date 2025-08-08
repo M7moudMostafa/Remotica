@@ -1,19 +1,26 @@
 import { Flex, Typography } from "antd";
+import styled from "styled-components";
+
+const { Title } = Typography;
 
 const Logo = () => {
-    const { Title } = Typography;
-    return (
-        <Flex align="center">
-            <img
-                src="/logo.png"
-                alt="logoImage"
-                style={{ width: "4rem", height: "4rem", objectFit: "contain" }}
-            />
-            <Title level={4} style={{ margin: 0, color: "#fff" }}>
-                Remotica
-            </Title>
-        </Flex>
-    );
+  return (
+    <Flex align="center">
+      <LogoImage src="/logo.png" alt="logoImage" />
+      <LogoTitle level={3}>Remotica</LogoTitle>
+    </Flex>
+  );
 };
+
+const LogoImage = styled.img`
+    width: 6rem;
+    height: 6rem;
+    object-fit: "contain
+`;
+
+const LogoTitle = styled(Title)`
+  margin: 0;
+  color: #fff;
+`;
 
 export default Logo;

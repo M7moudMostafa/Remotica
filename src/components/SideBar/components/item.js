@@ -1,25 +1,36 @@
-import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
-import { Flex, Menu } from "antd";
+import {
+  setFocus,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
 import { useEffect } from "react";
+import styled, { css } from "styled-components";
 
 const Item = ({ item }) => {
-  const { Item } = Menu;
-  const { ref, focused, focusSelf, focusKey } = useFocusable({
-    focusKey: item.focusKey
+  const { ref, focused, focusKey } = useFocusable({
+    focusKey: item.focusKey,
   });
 
   useEffect(() => {
-    focusSelf()
-  }, [focusSelf]);
+    setFocus("Main");
+  }, []);
 
   return (
-    <Flex ref={ref} focusKey={focusKey} style={{ fontSize: "1.1rem", color: focused && "#000" }} gap="middle">
-      {item.icon}
-      <Item>
-        {item.title}
-      </Item>
-    </Flex>
+    <MenuItem ref={ref} focusKey={focusKey} focused={focused}>
+      {item.icon} {item.title}
+    </MenuItem>
   );
 };
+
+const MenuItem = styled.div`
+  ${({ focused }) =>
+    focused &&
+    css`
+      font-size: 1.5rem;
+      background: linear-gradient(to right, #0083ff, #1f005c);
+      padding: 1rem;
+      border-radius: 1rem;
+      color: #011a32;
+    `}
+`;
 
 export default Item;
