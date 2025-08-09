@@ -1,7 +1,11 @@
 body {
-    background-color: linear-gradient(to right, #0083ff, #87ceeb);
+    background: linear-gradient(to right, #0083ff, #87ceeb);
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
+    font-family: "Google Sans Code", monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
