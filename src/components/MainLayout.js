@@ -1,13 +1,12 @@
 import { Flex } from 'antd';
-import SideBar from './SideBar'
+import SideBar from './SideBar';
+import Content from './Content'
 
 const MainLayout = () => {
   return (
     <Flex gap="middle" style={{ height: "100vh" }}>
         <SideBar />
-        <div>
-            Right Side
-        </div>
+        <Content />
     </Flex>
   )
 }

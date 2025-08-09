@@ -1,0 +1,17 @@
+import { Typography } from "antd";
+import styled from "styled-components";
+
+const { Title } = Typography;
+
+const TitleComponent = () => {
+  return <CustomTitle level={5}>Movies</CustomTitle>;
+};
+
+const CustomTitle = styled(Title)`
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+`;
+
+export default TitleComponent;
