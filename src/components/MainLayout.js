@@ -1,14 +1,20 @@
-import { Flex } from 'antd';
-import SideBar from './SideBar';
-import Content from './Content'
+import { Flex } from "antd";
+import SideBar from "./SideBar";
+import Content from "./Content";
+import styled from "styled-components";
 
 const MainLayout = () => {
   return (
-    <Flex gap="middle" style={{ height: "100vh" }}>
-        <SideBar />
-        <Content />
-    </Flex>
-  )
-}
+    <MainFlex gap="middle">
+      <SideBar />
+      <Content />
+    </MainFlex>
+  );
+};
 
-export default MainLayout
+const MainFlex = styled(Flex)`
+  width: 100vw;
+  height: 100vh;
+`;
+
+export default MainLayout;
