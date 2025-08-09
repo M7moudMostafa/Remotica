@@ -7,14 +7,19 @@ const useTitles = () => {
       {
         queryKey: ["Titles", "Movies"],
         queryFn: () =>
-          axios.get("https://api.imdbapi.dev/titles", {
-            types: "MOVIE",
-          }),
+          axios.get("https://api.imdbapi.dev/titles?types=MOVIE"),
       },
+      {
+        queryKey: ["Titles", "TV_SERIES"],
+        queryFn: () => axios.get("https://api.imdbapi.dev/titles?types=TV_SERIES"),
+      }
     ],
   });
 
-  return results;
+  return {
+    movies: results[0],
+    series: results[1]
+  }
 };
 
 export default useTitles;

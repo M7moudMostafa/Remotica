@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const { Title } = Typography;
 
-const TitleComponent = () => {
-  return <CustomTitle level={5}>Movies</CustomTitle>;
+const TitleComponent = ({ title }) => {
+  return <CustomTitle level={5}>{ title }</CustomTitle>;
 };
 
 const CustomTitle = styled(Title)`
