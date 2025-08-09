@@ -18,7 +18,7 @@ const Index = () => {
     ({ x }) => {
       scrollingRef.current &&
         scrollingRef.current.scrollTo({
-          left: x - 350,
+          left: x,
           behavior: "smooth",
         });
     },
