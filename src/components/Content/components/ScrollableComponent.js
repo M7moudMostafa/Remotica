@@ -9,7 +9,7 @@ const ScrollableComponent = ({ title, children }) => {
     const { ref, focusKey } = useFocusable();
 
     const onFocus = useCallback(
-        ({ x }) => {
+        ({ x, y }) => {
             scrollingRef.current &&
                 scrollingRef.current.scrollTo({
                     left: x -350,
