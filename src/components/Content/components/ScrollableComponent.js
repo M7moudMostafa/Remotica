@@ -6,6 +6,8 @@ import { useCallback } from "react";
 import styled from "styled-components";
 import TitleComponent from "./Title";
 import Card from "./Card";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const ScrollableComponent = ({ title, children, onFocus }) => {
   const { ref, focusKey } = useFocusable({
@@ -29,9 +31,24 @@ const ScrollableComponent = ({ title, children, onFocus }) => {
       <FocusContext.Provider value={focusKey}>
         <ContentRowScrollingWrapper ref={ref}>
           <ContentRowScrollingContent>
-            {children?.data?.data?.titles?.slice(0, 10)?.map((info, i) => (
-              <Card info={info} onFocus={onAssetsFocus} key={i} />
-            ))}
+            {children && children?.data?.data?.titles
+              ? children.data.data.titles
+                  .slice(0, 10)
+                  .map((info, i) => (
+                    <Card info={info} onFocus={onAssetsFocus} key={i} />
+                  ))
+              : Array.from({ length: 7 }).map((_, i) => (
+                  <SkeletonContainer key={i}>
+                    <Skeleton
+                      style={{
+                        width: "11rem",
+                        height: "16rem",
+                        margin: "0 1rem",
+                      }}
+                      baseColor="#ebebeb61"
+                    />
+                  </SkeletonContainer>
+                ))}
           </ContentRowScrollingContent>
         </ContentRowScrollingWrapper>
       </FocusContext.Provider>
@@ -55,6 +72,12 @@ const ContentRowScrollingWrapper = styled.div`
   overflow: hidden;
   flex-shrink: 1;
   flex-grow: 1;
+`;
+
+const SkeletonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export default ScrollableComponent;
