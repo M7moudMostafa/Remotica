@@ -8,8 +8,12 @@ import TitleComponent from "./Title";
 import Card from "./Card";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { JotaiStore } from "../../../stores/JotaiStore";
+import { useAtom } from "jotai";
 
 const ScrollableComponent = ({ title, children, onFocus }) => {
+  const [mediaInfo, setMediaInfo] = useAtom(JotaiStore);
+
   const { ref, focusKey } = useFocusable({
     onFocus,
   });
@@ -25,6 +29,8 @@ const ScrollableComponent = ({ title, children, onFocus }) => {
     [ref]
   );
 
+  const onArrowRelease = (card) => setMediaInfo(card);
+
   return (
     <Container>
       <TitleComponent title={title} />
@@ -35,7 +41,12 @@ const ScrollableComponent = ({ title, children, onFocus }) => {
               ? children.data.data.titles
                   .slice(0, 10)
                   .map((info, i) => (
-                    <Card info={info} onFocus={onAssetsFocus} key={i} />
+                    <Card
+                      info={info}
+                      onFocus={onAssetsFocus}
+                      key={i}
+                      onArrowRelease={() => onArrowRelease(info)}
+                    />
                   ))
               : Array.from({ length: 7 }).map((_, i) => (
                   <SkeletonContainer key={i}>

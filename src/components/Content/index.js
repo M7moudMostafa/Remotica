@@ -24,7 +24,7 @@ const Index = () => {
   const onRowFocus = useCallback(
     ({ top }) => {
       ref.current.scrollTo({
-        top: top - 50,
+        top: top - 600,
         behavior: "smooth",
       });
     },
@@ -44,18 +44,18 @@ const Index = () => {
 
   return (
     <FocusContext.Provider value={focusKey}>
-      <ScrollingRows ref={ref}>
-        <FlexContainer>
-          {categories.map(({ title, data }) => (
-            <ScrollableComponent
-              key={title}
-              title={title}
-              children={data}
-              onFocus={onRowFocus}
-            />
-          ))}
-        </FlexContainer>
-      </ScrollingRows>
+        <ScrollingRows ref={ref}>
+          <FlexContainer direction="column">
+            {categories.map(({ title, data }) => (
+              <ScrollableComponent
+                key={title}
+                title={title}
+                children={data}
+                onFocus={onRowFocus}
+              />
+            ))}
+          </FlexContainer>
+        </ScrollingRows>
     </FocusContext.Provider>
   );
 };
@@ -70,7 +70,7 @@ const ScrollingRows = styled.div`
 const FlexContainer = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: ${({ direction }) => direction && direction};
   gap: 1rem;
 `;
 

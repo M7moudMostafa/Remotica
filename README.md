@@ -16,6 +16,11 @@
 - **Norigin Spatial Navigation**
 - **IMDb API**
 - **Ant Design**
+- **Jotai**
+- **Google Fonts**
+- **React Loading Skeleton**
+- **React Router**
+- **Styled Components**
 
 ## 🚀 Getting Started
 

@@ -1,9 +1,10 @@
 import { useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import styled from "styled-components";
 
-const Card = ({ onFocus, info }) => {
+const Card = ({ onFocus, info, onArrowRelease }) => {
   const { ref, focused } = useFocusable({
     onFocus: (layout) => onFocus(layout),
+    onArrowRelease,
     focusKey: info?.id,
   });
   return (
