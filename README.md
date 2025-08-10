@@ -25,7 +25,7 @@
 ## 🚀 Getting Started
 
 ```bash
-git clone git@github.com:M7moudMostafa/cine-tv-ui.git
-cd cine-tv-ui
+git clone git@github.com:M7moudMostafa/Remotica.git
+cd Remotica
 npm install
 npm run dev
