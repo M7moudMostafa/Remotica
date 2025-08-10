@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import useTitles from "../../hooks/useTitles";
 import ScrollableComponent from "./components/ScrollableComponent";
+import {
+  FocusContext,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
+import { useCallback } from "react";
 
 const Index = () => {
   const {
@@ -14,19 +19,53 @@ const Index = () => {
     videoGames,
   } = useTitles();
 
+  const { ref, focusKey } = useFocusable({});
+
+  const onRowFocus = useCallback(
+    ({ top }) => {
+      ref.current.scrollTo({
+        top: top - 50,
+        behavior: "smooth",
+      });
+    },
+    [ref]
+  );
+
+  const categories = [
+    { title: "Movies", data: movies },
+    { title: "Series", data: series },
+    { title: "Mini Series", data: miniSeries },
+    { title: "Specials", data: specials },
+    { title: "TV Movies", data: tvMovies },
+    { title: "Shorts", data: shorts },
+    { title: "Videos", data: videos },
+    { title: "Video Games", data: videoGames },
+  ];
+
   return (
-    <FlexContainer>
-      <ScrollableComponent title="Movies" children={movies} />
-      <ScrollableComponent title="Series" children={series} />
-      <ScrollableComponent title="Mini Series" children={miniSeries} />
-      <ScrollableComponent title="Specials" children={specials} />
-      <ScrollableComponent title="TV Movies" children={tvMovies} />
-      <ScrollableComponent title="Shorts" children={shorts} />
-      <ScrollableComponent title="Videos" children={videos} />
-      <ScrollableComponent title="Video Games" children={videoGames} />
-    </FlexContainer>
+    <FocusContext.Provider value={focusKey}>
+      <ScrollingRows ref={ref}>
+        <FlexContainer>
+          {categories.map(({ title, data }) => (
+            <ScrollableComponent
+              key={title}
+              title={title}
+              children={data}
+              onFocus={onRowFocus}
+            />
+          ))}
+        </FlexContainer>
+      </ScrollingRows>
+    </FocusContext.Provider>
   );
 };
+
+const ScrollingRows = styled.div`
+  overflow-y: hidden;
+  overflow-x: hidden;
+  flex-shrink: 1;
+  flex-grow: 1;
+`;
 
 const FlexContainer = styled.div`
   display: flex;

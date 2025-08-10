@@ -1,56 +1,54 @@
-import { FocusContext, useFocusable } from '@noriginmedia/norigin-spatial-navigation'
-import { useCallback, useRef } from 'react'
-import styled from 'styled-components';
-import TitleComponent from './Title';
+import {
+  FocusContext,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
+import { useCallback } from "react";
+import styled from "styled-components";
+import TitleComponent from "./Title";
 import Card from "./Card";
 
-const ScrollableComponent = ({ title, children }) => {
-    const scrollingRef = useRef();
-    const { ref, focusKey } = useFocusable();
+const ScrollableComponent = ({ title, children, onFocus }) => {
+  const { ref, focusKey } = useFocusable({
+    onFocus,
+  });
 
-    const onFocus = useCallback(
-        ({ x, y }) => {
-            scrollingRef.current &&
-                scrollingRef.current.scrollTo({
-                    left: x -350,
-                    behavior: "smooth",
-                });
-        },
-        [scrollingRef]
-    );
+  const onAssetsFocus = useCallback(
+    ({ x }) => {
+      ref.current &&
+        ref.current.scrollTo({
+          left: x - 400,
+          behavior: "smooth",
+        });
+    },
+    [ref]
+  );
 
-    return (
-        <Container>
-            <TitleComponent title={title} />
-            <FocusContext.Provider value={focusKey}>
-                <CardContainer ref={ref}>
-                    <ContentRowScrollingWrapper ref={scrollingRef}>
-                        <ContentRowScrollingContent>
-                            {children?.data?.data?.titles?.slice(0, 10)?.map((info, i) => (
-                                <Card info={info} onFocus={onFocus} key={i} />
-                            ))}
-                        </ContentRowScrollingContent>
-                    </ContentRowScrollingWrapper>
-                </CardContainer>
-            </FocusContext.Provider>
-        </Container>
-    )
-}
+  return (
+    <Container>
+      <TitleComponent title={title} />
+      <FocusContext.Provider value={focusKey}>
+        <ContentRowScrollingWrapper ref={ref}>
+          <ContentRowScrollingContent>
+            {children?.data?.data?.titles?.slice(0, 10)?.map((info, i) => (
+              <Card info={info} onFocus={onAssetsFocus} key={i} />
+            ))}
+          </ContentRowScrollingContent>
+        </ContentRowScrollingWrapper>
+      </FocusContext.Provider>
+    </Container>
+  );
+};
 
 const Container = styled.div`
-  max-width: calc(100vw - 350px);
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 0 2rem 0 0;
+  max-width: calc(100vw - 400px);
 `;
 
 const ContentRowScrollingContent = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2rem 0 0;
 `;
 
 const ContentRowScrollingWrapper = styled.div`
@@ -59,4 +57,4 @@ const ContentRowScrollingWrapper = styled.div`
   flex-grow: 1;
 `;
 
-export default ScrollableComponent
+export default ScrollableComponent;
