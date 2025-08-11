@@ -1,11 +1,10 @@
 import { ClockCircleOutlined, StarOutlined } from "@ant-design/icons";
-import React from "react";
 import styled from "styled-components";
-import { JotaiStore } from "../../../stores/JotaiStore";
+import { mediaInfoAtom } from "../../../stores/JotaiStore";
 import { useAtomValue } from "jotai";
 
 const Banner = () => {
-  const mediaInfo = useAtomValue(JotaiStore);
+  const mediaInfo = useAtomValue(mediaInfoAtom);
 
   return (
     <Container>

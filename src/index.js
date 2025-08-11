@@ -10,7 +10,7 @@ import { queryClient } from "./config/queryClient";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 init({
-  debug: true,
+  // debug: true,
   // visualDebug: true
 });
 
