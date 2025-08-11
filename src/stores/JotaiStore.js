@@ -1,3 +1,5 @@
 import { atom } from "jotai";
 
-export const JotaiStore = atom(null);
+export const activeComponentAtom = atom("Main");
+
+export const mediaInfoAtom = atom(null);

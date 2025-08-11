@@ -7,9 +7,16 @@ import Item from "./components/item";
 import { MenuItems } from "../../utils/MenuItem";
 import Logo from "./components/Logo";
 import styled from "styled-components";
+import { activeComponentAtom } from "../../stores/JotaiStore";
+import { useAtom } from "jotai";
 
 const SideBar = () => {
   const { ref, focusKey } = useFocusable();
+  const [, setActiveComponent] = useAtom(activeComponentAtom);
+
+  const onEnterPress = (component) => {
+    setActiveComponent(component);
+  };
 
   return (
     <SideBarComponent width={350}>
@@ -17,7 +24,11 @@ const SideBar = () => {
       <FocusContext.Provider value={focusKey}>
         <Menu ref={ref}>
           {MenuItems.map((item, i) => (
-            <Item item={item} key={i} />
+            <Item
+              item={item}
+              key={i}
+              onEnterPress={onEnterPress}
+            />
           ))}
         </Menu>
       </FocusContext.Provider>

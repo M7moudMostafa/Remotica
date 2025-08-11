@@ -8,11 +8,11 @@ import TitleComponent from "./Title";
 import Card from "./Card";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { JotaiStore } from "../../../stores/JotaiStore";
+import { mediaInfoAtom } from "../../../stores/JotaiStore";
 import { useAtom } from "jotai";
 
 const ScrollableComponent = ({ title, children, onFocus }) => {
-  const [mediaInfo, setMediaInfo] = useAtom(JotaiStore);
+  const [, setMediaInfo] = useAtom(mediaInfoAtom);
 
   const { ref, focusKey } = useFocusable({
     onFocus,

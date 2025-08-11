@@ -3,19 +3,25 @@ import SideBar from "./SideBar";
 import Content from "./Content";
 import styled from "styled-components";
 import Banner from "./Content/components/Banner";
-import { JotaiStore } from "../stores/JotaiStore";
+import { activeComponentAtom, mediaInfoAtom } from "../stores/JotaiStore";
 import { useAtomValue } from "jotai";
+import TabsContent from "./Content/components/TabsContent";
 
 const MainLayout = () => {
-  const mediaInfo = useAtomValue(JotaiStore);
+  const mediaInfo = useAtomValue(mediaInfoAtom);
+  const activeComponent = useAtomValue(activeComponentAtom);
 
   return (
     <MainFlex gap="middle">
       <SideBar />
-      <Wrapper>
-        {mediaInfo && <Banner />}
-        <Content />
-      </Wrapper>
+      {activeComponent === "Main" ? (
+        <Wrapper>
+          {mediaInfo && <Banner />}
+          <Content />
+        </Wrapper>
+      ) : activeComponent === "Movie" && (
+        <TabsContent title={"Movies"} />
+      )}
     </MainFlex>
   );
 };

@@ -5,9 +5,12 @@ import {
 import { useEffect } from "react";
 import styled, { css } from "styled-components";
 
-const Item = ({ item }) => {
+const Item = ({ item, onEnterPress }) => {
   const { ref, focused } = useFocusable({
     focusKey: item.focusKey,
+    onEnterPress: () => {
+      onEnterPress(item.title);
+    },
   });
 
   useEffect(() => {

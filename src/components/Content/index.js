@@ -8,16 +8,14 @@ import {
 import { useCallback } from "react";
 
 const Index = () => {
-  const {
-    movies,
-    series,
-    miniSeries,
-    specials,
-    tvMovies,
-    shorts,
-    videos,
-    videoGames,
-  } = useTitles();
+  const movies = useTitles("MOVIE");
+  const series = useTitles("TV_SERIES");
+  const miniSeries = useTitles("TV_MINI_SERIES");
+  const specials = useTitles("TV_SPECIAL");
+  const tvMovies = useTitles("TV_MOVIE");
+  const shorts = useTitles("SHORT");
+  const videos = useTitles("VIDEO");
+  const videoGames = useTitles("VIDEO_GAME");
 
   const { ref, focusKey } = useFocusable({});
 
@@ -44,18 +42,18 @@ const Index = () => {
 
   return (
     <FocusContext.Provider value={focusKey}>
-        <ScrollingRows ref={ref}>
-          <FlexContainer direction="column">
-            {categories.map(({ title, data }) => (
-              <ScrollableComponent
-                key={title}
-                title={title}
-                children={data}
-                onFocus={onRowFocus}
-              />
-            ))}
-          </FlexContainer>
-        </ScrollingRows>
+      <ScrollingRows ref={ref}>
+        <FlexContainer direction="column">
+          {categories.map(({ title, data }) => (
+            <ScrollableComponent
+              key={title}
+              title={title}
+              children={data}
+              onFocus={onRowFocus}
+            />
+          ))}
+        </FlexContainer>
+      </ScrollingRows>
     </FocusContext.Provider>
   );
 };
