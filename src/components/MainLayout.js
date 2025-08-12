@@ -6,22 +6,30 @@ import Banner from "./Content/components/Banner";
 import { activeComponentAtom, mediaInfoAtom } from "../stores/JotaiStore";
 import { useAtomValue } from "jotai";
 import TabsContent from "./Content/components/TabsContent";
+import { MenuItems } from "../utils/MenuItem";
 
 const MainLayout = () => {
   const mediaInfo = useAtomValue(mediaInfoAtom);
   const activeComponent = useAtomValue(activeComponentAtom);
 
-  return (
-    <MainFlex gap="middle">
-      <SideBar />
-      {activeComponent === "Main" ? (
+  if (activeComponent === "Main") {
+    return (
+      <MainFlex gap="middle">
+        <SideBar />
         <Wrapper>
           {mediaInfo && <Banner />}
           <Content />
         </Wrapper>
-      ) : activeComponent === "Movie" && (
-        <TabsContent title={"Movies"} />
-      )}
+      </MainFlex>
+    );
+  }
+
+  const activeItem = MenuItems.find((item) => item.title === activeComponent);
+
+  return (
+    <MainFlex gap="middle">
+      <SideBar />
+      {activeItem ? <TabsContent item={activeItem} /> : null}
     </MainFlex>
   );
 };

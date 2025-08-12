@@ -6,6 +6,8 @@ const useTitles = (type) => {
     queryKey: ["Titles", type],
     queryFn: () => getAllTitle({ types: type }),
     enabled: !!type,
+    staleTime: Infinity,
+    gcTime: Infinity
   });
 };
 

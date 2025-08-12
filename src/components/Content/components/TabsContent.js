@@ -1,20 +1,63 @@
-import React from 'react'
-import styled from 'styled-components'
-import TitleComponent from './Title';
+import React, { useCallback } from "react";
+import styled from "styled-components";
+import TitleComponent from "./Title";
+import useTitles from "../../../hooks/useTitles";
+import Card from "./Card";
+import {
+  FocusContext,
+  useFocusable,
+} from "@noriginmedia/norigin-spatial-navigation";
 
-const TabsContent = ({ title }) => {
+const TabsContent = ({ item }) => {
+  const data = useTitles(item.focusKey);
+
+  const { ref, focusKey } = useFocusable({});
+
+  const onAssetsFocus = useCallback(
+    ({ top }) => {
+      ref.current &&
+        ref.current.scrollTo({
+          left: top - 100,
+          behavior: "smooth",
+        });
+    },
+    [ref]
+  );
+
   return (
-    <Container>
-        <TitleComponent title={title} />
-    </Container>
-  )
-}
+    <FocusContext.Provider value={focusKey}>
+      <Container>
+        <TitleComponent title={item.title} />
+        <ScrollableContainer ref={ref}>
+          <CardContainer>
+            {data?.data?.data.titles.map((data, i) => (
+              <Card info={data} onFocus={onAssetsFocus} key={i} />
+            ))}
+          </CardContainer>
+        </ScrollableContainer>
+      </Container>
+    </FocusContext.Provider>
+  );
+};
 
 const Container = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
 `;
 
-export default TabsContent
+const ScrollableContainer = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-shrink: 1;
+  flex-grow: 1;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem 0;
+`;
+
+export default TabsContent;
