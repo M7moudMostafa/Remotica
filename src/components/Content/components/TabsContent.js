@@ -14,10 +14,10 @@ const TabsContent = ({ item }) => {
   const { ref, focusKey } = useFocusable({});
 
   const onAssetsFocus = useCallback(
-    ({ top }) => {
+    ({ y }) => {
       ref.current &&
         ref.current.scrollTo({
-          left: top - 100,
+          top: y - 50,
           behavior: "smooth",
         });
     },
@@ -46,7 +46,7 @@ const Container = styled.div`
 `;
 
 const ScrollableContainer = styled.div`
-  overflow-y: auto;
+  overflow-y: hidden;
   overflow-x: hidden;
   flex-shrink: 1;
   flex-grow: 1;
