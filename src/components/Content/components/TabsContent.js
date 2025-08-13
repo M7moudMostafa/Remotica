@@ -9,7 +9,7 @@ import {
 } from "@noriginmedia/norigin-spatial-navigation";
 
 const TabsContent = ({ item }) => {
-  const data = useTitles(item.focusKey);
+  const data = useTitles(item.key);
 
   const { ref, focusKey } = useFocusable({});
 

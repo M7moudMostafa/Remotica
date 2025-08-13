@@ -10,17 +10,18 @@ import {
 } from "@ant-design/icons";
 
 export const MenuItems = [
-  { focusKey: "Main", title: "Main", icon: <HomeOutlined /> },
-  { focusKey: "MOVIE", title: "Movie", icon: <VideoCameraOutlined /> },
-  { focusKey: "TV_SERIES", title: "TV Series", icon: <DesktopOutlined /> },
+  { key: "Main", focusKey: "Main", title: "Main", icon: <HomeOutlined /> },
+  { key: "MOVIE", focusKey: "Movie", title: "Movie", icon: <VideoCameraOutlined /> },
+  { key: "TV_SERIES", focusKey: "TV Series", title: "TV Series", icon: <DesktopOutlined /> },
   {
-    focusKey: "TV_MINI_SERIES",
+    key: "TV_MINI_SERIES",
+    focusKey: "TV Mini-Series",
     title: "TV Mini-Series",
     icon: <DesktopOutlined />,
   },
-  { focusKey: "TV_SPECIAL", title: "TV Special", icon: <StarOutlined /> },
-  { focusKey: "TV_MOVIE", title: "TV Movie", icon: <PlayCircleOutlined /> },
-  { focusKey: "SHORT", title: "Short", icon: <ScissorOutlined /> },
-  { focusKey: "VIDEO", title: "Video", icon: <YoutubeOutlined /> },
-  { focusKey: "VIDEO_GAME", title: "Video Game", icon: <PlaySquareOutlined /> },
+  { key: "TV_SPECIAL", focusKey: "TV Special", title: "TV Special", icon: <StarOutlined /> },
+  { key: "TV_MOVIE", focusKey: "TV Movie", title: "TV Movie", icon: <PlayCircleOutlined /> },
+  { key: "SHORT", focusKey: "Short", title: "Short", icon: <ScissorOutlined /> },
+  { key: "VIDEO", focusKey: "Video", title: "Video", icon: <YoutubeOutlined /> },
+  { key: "VIDEO_GAME", focusKey: "Video Game", title: "Video Game", icon: <PlaySquareOutlined /> },
 ];
