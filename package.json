@@ -1,49 +1,37 @@
 {
-  "name": "hi",
-  "version": "0.1.0",
+  "name": "remotica-app",
   "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@ant-design/icons": "^5.6.1",
+    "@ant-design/icons": "^6.0.0",
     "@noriginmedia/norigin-spatial-navigation": "^2.3.0",
-    "@tanstack/react-query": "^5.84.1",
-    "@tanstack/react-query-devtools": "^5.84.2",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.6.4",
-    "@testing-library/react": "^16.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "antd": "^5.26.7",
+    "@tanstack/react-query": "^5.85.5",
+    "@tanstack/react-query-devtools": "^5.85.5",
+    "antd": "^5.27.1",
     "axios": "^1.11.0",
-    "jotai": "^2.13.0",
+    "jotai": "^2.13.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-loading-skeleton": "^3.5.0",
-    "react-router-dom": "^7.7.1",
-    "react-scripts": "5.0.1",
-    "styled-components": "^6.1.19",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^7.8.2",
+    "styled-components": "^6.1.19"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "vite": "^7.1.2"
   }
 }

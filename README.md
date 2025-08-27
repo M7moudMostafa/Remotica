@@ -21,6 +21,7 @@
 - **React Loading Skeleton**
 - **React Router**
 - **Styled Components**
+- **Vite**
 
 ## 🚀 Getting Started
 

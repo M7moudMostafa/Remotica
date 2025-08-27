@@ -27,7 +27,7 @@ const Item = ({ item, onEnterPress }) => {
       $focused={focused}
       $selected={activeComponent === focusKey}
     >
-      {item.icon} {item.title}
+      {<item.icon />} {item.title}
     </MenuItem>
   );
 };
