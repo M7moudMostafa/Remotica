@@ -2,7 +2,7 @@ import axios from "axios";
 import { getToken } from "./tokenService";
 
 const api = axios.create({
-    baseURL: "https://api.imdbapi.dev",
+    baseURL: import.meta.env.VITE_API_URL,
     timeout: 5000,
     headers: {
         "Content-Type": "application/json"
