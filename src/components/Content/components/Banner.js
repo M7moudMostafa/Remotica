@@ -73,6 +73,7 @@ const Container = styled.div`
   width: 100%;
   height: 200rem;
   padding: 1rem 0;
+  color: #ffd700;
 `;
 
 const RightWrapper = styled.div`

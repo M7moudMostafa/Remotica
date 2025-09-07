@@ -20,7 +20,7 @@ const LogoImage = styled.img`
 
 const LogoTitle = styled(Title)`
   margin: 0;
-  color: #fff;
+  color: #fff !important;
 `;
 
 export default Logo;

@@ -15,7 +15,7 @@ const MainLayout = () => {
   if (activeComponent === "Main") {
     return (
       <MainFlex gap="middle">
-        <SideBar />
+        <SideBar customFocusKey={"SIDEBAR_MENU"}/>
         <Wrapper>
           {mediaInfo && <Banner />}
           <Content />
