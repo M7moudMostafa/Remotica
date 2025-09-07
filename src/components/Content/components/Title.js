@@ -12,6 +12,7 @@ const CustomTitle = styled(Title)`
   padding: 0;
   font-size: 2rem !important;
   font-weight: 500 !important;
+  color: #fff !important;
 `;
 
 export default TitleComponent;

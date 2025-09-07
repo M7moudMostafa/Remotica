@@ -1,25 +1,21 @@
 import {
-  setFocus,
   useFocusable,
 } from "@noriginmedia/norigin-spatial-navigation";
-import { useAtomValue } from "jotai";
-import { useEffect } from "react";
+import { useAtom, useAtomValue } from "jotai";
 import styled, { css } from "styled-components";
-import { activeComponentAtom } from "../../../stores/JotaiStore";
+import { activeComponentAtom, mediaInfoAtom } from "../../../stores/JotaiStore";
 
 const Item = ({ item, onEnterPress }) => {
+  const [, setMediaInfo] = useAtom(mediaInfoAtom);
+  const activeComponent = useAtomValue(activeComponentAtom);
+
   const { ref, focused, focusKey } = useFocusable({
     focusKey: item.focusKey,
     onEnterPress: () => {
       onEnterPress(item.title);
     },
+    onFocus: () => setMediaInfo(null)
   });
-
-  const activeComponent = useAtomValue(activeComponentAtom);
-
-  useEffect(() => {
-    setFocus("Main");
-  }, []);
 
   return (
     <MenuItem
@@ -39,10 +35,10 @@ const MenuItem = styled.div`
     $selected &&
     css`
       font-size: 1.5rem;
-      background: linear-gradient(to right, #7cbfff, #3d00b6);
+      background: rgba(255, 255, 255, 0.1);
       padding: 1rem;
       border-radius: 1rem;
-      color: #011a32;
+      color: #ffd700;
       transform: scale(1.05);
     `}
 
@@ -50,10 +46,10 @@ const MenuItem = styled.div`
     $focused &&
     css`
       font-size: 1.5rem;
-      background: linear-gradient(to right, #0083ff, #1f005c);
+      background: rgba(255, 255, 255, 0.2);
       padding: 1rem;
       border-radius: 1rem;
-      color: #011a32;
+      color: #ffd700;
       transform: scale(1.05);
     `}
 `;
