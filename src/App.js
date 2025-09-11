@@ -6,6 +6,7 @@ import {
 import MainLayout from "./components/MainLayout";
 import Splash from "./components/Splash";
 import Card from "./components/Card/index";
+import Credits from "./components/Credits/index";
 import { useEffect } from "react";
 import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Splash />} />
         <Route path="/mainmenu" element={<MainLayout />} />
         <Route path="/mainmenu/:id" element={<Card />} />
+        <Route path="/mainmenu/:id/credits" element={<Credits />} />
       </Routes>
     </Router>
   );

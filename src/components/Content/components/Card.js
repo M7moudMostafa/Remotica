@@ -42,9 +42,15 @@ const CardContainer = styled.div`
 
 const CardComponent = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 1rem;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  
+  &:hover {
+      transform: scale(1.02);
+  }
 `;
 
 export default Card;

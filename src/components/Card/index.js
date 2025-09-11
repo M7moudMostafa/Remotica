@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import useTitleById from '../../hooks/useTitleById';
 import styled from 'styled-components';
+import Button from '../common/Button';
 
 const Index = () => {
     const { id } = useParams();
@@ -9,9 +10,13 @@ const Index = () => {
     const { data } = details;
     const navigate = useNavigate();
 
+    const onCreditsPress = () => {
+        navigate(`/mainmenu/${id}/credits`);
+    }
+
     useEffect(() => {
         const handleKeyPress = (event) => {
-            if(event.key === "Backspace") {
+            if (event.key === "Backspace") {
                 navigate("/mainmenu")
             }
         }
@@ -67,6 +72,7 @@ const Index = () => {
                             e.target.src = 'https://placehold.co/600x400';
                         }}
                     />
+                    <Button title={"Credits"} onEnterPress={onCreditsPress} />
                 </PosterWrapper>
             </LeftSection>
 
@@ -257,6 +263,10 @@ const LeftSection = styled.div`
 const PosterWrapper = styled.div`
     position: sticky;
     top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
 `;
 
 const Image = styled.img`
