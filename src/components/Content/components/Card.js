@@ -1,19 +1,15 @@
 import { setFocus, useFocusable } from "@noriginmedia/norigin-spatial-navigation";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { mediaInfoAtom } from "../../../stores/JotaiStore";
-import { useAtom } from "jotai";
 
 const Card = ({ onFocus, info, onArrowRelease }) => {
   const navigate = useNavigate();
-  const [, setMediaInfo] = useAtom(mediaInfoAtom);
 
   const { ref, focused } = useFocusable({
     onFocus: (layout) => onFocus(layout),
     onArrowRelease: onArrowRelease && onArrowRelease,
     focusKey: info?.id,
     onEnterPress: () => {
-      setMediaInfo(null);
       setFocus("Main");
       navigate(`/${info.id}`);
     }
@@ -27,10 +23,15 @@ const Card = ({ onFocus, info, onArrowRelease }) => {
 
 const CardContainer = styled.div`
   width: 11rem;
+  min-width: 11rem;
+  max-width: 11rem;
   height: 16rem;
+  min-height: 16rem;
+  max-height: 16rem;
   margin: 0 1rem;
   flex-shrink: 0;
   border-radius: 1rem;
+  box-sizing: border-box;
 
   ${({ $focused }) =>
     $focused &&
@@ -43,8 +44,13 @@ const CardContainer = styled.div`
 const CardComponent = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  object-fit: cover;
   border-radius: 1rem;
+  display: block;
 `;
 
 export default Card;
