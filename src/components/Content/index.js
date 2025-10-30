@@ -22,7 +22,7 @@ const Index = () => {
   const onRowFocus = useCallback(
     ({ top }) => {
       ref.current.scrollTo({
-        top: top - 1000,
+        top: top - 700,
         behavior: "smooth",
       });
     },
