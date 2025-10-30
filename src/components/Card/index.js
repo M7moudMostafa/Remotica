@@ -12,7 +12,7 @@ const Index = () => {
     useEffect(() => {
         const handleKeyPress = (event) => {
             if(event.key === "Backspace") {
-                navigate("/mainmenu")
+                navigate("/")
             }
         }
 
