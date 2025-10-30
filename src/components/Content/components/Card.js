@@ -15,7 +15,7 @@ const Card = ({ onFocus, info, onArrowRelease }) => {
     onEnterPress: () => {
       setMediaInfo(null);
       setFocus("Main");
-      navigate(`/mainmenu/${info.id}`);
+      navigate(`/${info.id}`);
     }
   });
   return (
