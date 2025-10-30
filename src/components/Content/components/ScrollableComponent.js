@@ -6,8 +6,6 @@ import { useCallback } from "react";
 import styled from "styled-components";
 import TitleComponent from "./Title";
 import Card from "./Card";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 import { mediaInfoAtom } from "../../../stores/JotaiStore";
 import { useAtom } from "jotai";
 
@@ -48,18 +46,11 @@ const ScrollableComponent = ({ title, children, onFocus }) => {
                       onArrowRelease={() => onArrowRelease(info)}
                     />
                   ))
-              : Array.from({ length: 7 }).map((_, i) => (
-                  <SkeletonContainer key={i}>
-                    <Skeleton
-                      style={{
-                        width: "11rem",
-                        height: "16rem",
-                        margin: "0 1rem",
-                      }}
-                      baseColor="#ebebeb61"
-                    />
-                  </SkeletonContainer>
-                ))}
+              :
+                <LoadingWrapper>
+                  <span>Loading {title}...</span>
+                </LoadingWrapper>
+            }
           </ContentRowScrollingContent>
         </ContentRowScrollingWrapper>
       </FocusContext.Provider>
@@ -85,10 +76,12 @@ const ContentRowScrollingWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const SkeletonContainer = styled.div`
+const LoadingWrapper = styled.div`
+  width: 100%;
+  height: 16rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export default ScrollableComponent;
