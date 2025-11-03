@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Button from '../common/Button';
 import useCreditsByTitleId from '../../hooks/useCredits';
 import Card from '../common/Card';
-import { FocusContext, setFocus, useFocusable } from '@noriginmedia/norigin-spatial-navigation';
+import { FocusContext, useFocusable } from '@noriginmedia/norigin-spatial-navigation';
 
 const Index = () => {
     const { id } = useParams();
@@ -13,7 +13,8 @@ const Index = () => {
     const navigate = useNavigate();
 
     const { ref, focusKey } = useFocusable({
-        focusKey: "Credits-Container"
+        focusKey: "Credits-Container",
+        focusable: true
     });
 
     useEffect(() => {
