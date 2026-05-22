@@ -17,11 +17,18 @@ export default defineConfig({
     include: /src\/.*\.js$/,
     exclude: [],
   },
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        ".js": "jsx",
+      },
+    },
+  },
   server: {
     port: 3000,
     host: true,
     open: true,
-    strictPort: true,
+    strictPort: false,
   },
   build: {
     outDir: "build",
