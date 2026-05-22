@@ -3,21 +3,13 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import MainLayout from "./components/MainLayout";
-import Card from "./components/Card/index";
-import { useEffect } from "react";
-import { setFocus } from "@noriginmedia/norigin-spatial-navigation";
+import Home from './components/Home';
 
-function App() {
-  useEffect(() => {
-    setFocus("SIDEBAR_MENU");
-  }, []);
-  
+function App() {  
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainLayout />} />
-        <Route path="/:id" element={<Card />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </Router>
   );
