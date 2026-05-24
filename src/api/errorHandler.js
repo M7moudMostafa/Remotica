@@ -1,9 +1,12 @@
 export const handleApiErrors = (error) => {
-    if (error.request) {
-        console.log("Error occurs in request ", error.request.data);
-    } else if (error.response) {
-        console.log("Error occurs in response ", error.response);
+    if (error.response) {
+        // The server responded with a status code outside the 2xx range
+        console.error("API Response Error:", error.response.status, error.response.data);
+    } else if (error.request) {
+        // The request was made but no response was received
+        console.error("API Request Error (No Response):", error.request);
     } else {
-        console.log("Axios config error ", error.message);
+        // Something happened in setting up the request
+        console.error("API Config Error:", error.message);
     }
 };

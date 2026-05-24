@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getToken } from "./tokenService";
+import { handleApiErrors } from "./errorHandler";
 
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
@@ -11,7 +12,7 @@ const api = axios.create({
 
 api.interceptors.request.use(config => {
     const token = getToken();
-    if(token) config.headers.Authorization = token;
+    if(token) config.headers.Authorization = `Bearer ${token}`;
 
     return config;
 });
@@ -19,9 +20,9 @@ api.interceptors.request.use(config => {
 api.interceptors.response.use(
     (res) => res,
     (error) => {
-        console.log("Error: ", error)
-        return Promise.reject(error)
+        handleApiErrors(error);
+        return Promise.reject(error);
     }
-)
+);
 
 export default api;
